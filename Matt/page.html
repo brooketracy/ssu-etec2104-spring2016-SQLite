@@ -1,0 +1,42 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<form>
+			Name: <input type="text" id="name"><br>
+			<input type="submit" value="Get" onclick="get()">
+			Sensitivity: <input type="text" id="sensitivity"><br>
+			<input type="submit" value="Set" onclick="set()">
+		</form>
+		<script>
+			function get() {
+				var playerName = document.getElementById("name").value;
+				$.ajax({
+					type: "POST",
+					url: "~/getSensitivity.py",
+					data: {playerName: text},
+					dataType: "text"
+				});
+					
+				var sen = jqXHR.responseText;
+				console.log(localStorage.getItem('playerName'));
+				
+				document.setElementByid("sensitivity").value = 34;//localStorage.getItem('playerName');
+			}
+			function set() {
+				var playerName = document.getElementById("name").value;
+				var sen2 = document.getElementById("sensitivity").value;
+				$.ajax({
+					type: "POST",
+					url: "~/setSensitivity.py",
+					data: {playerName: text, sen2: text},
+					dataType: "text"
+				});
+			
+				localStorage.setItem('playerName', sen2);
+			}
+
+		</script>
+	</body>
+</html>
